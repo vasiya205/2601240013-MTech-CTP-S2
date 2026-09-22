@@ -1,0 +1,25 @@
+Question 5: Using Dataclasses for an Inventory System
+
+#1. Algorithm
+Import Dataclass: Import the @dataclass decorator from Python's built-in dataclasses module.
+
+Define the Dataclass: Create a class named InventoryItem and apply the @dataclass decorator. This automatically generates boilerplate methods like __init__() and __repr__().
+
+Specify Fields with Types: Define the required inventory attributes with their types: product_id (str), product_name (str), quantity (int), and price (float).
+
+Instantiate and Test: Create multiple inventory item objects and print them or perform calculations on their attributes.
+
+#2. Pseudocode
+Plaintext
+IMPORT dataclass FROM dataclasses
+
+@dataclass
+CLASS InventoryItem
+    product_id: str
+    product_name: str
+    quantity: int
+    price: float
+END CLASS
+
+// Automatically gets an __init__ method for free:
+// item = InventoryItem("P001", "Laptop", 10, 999.99)
