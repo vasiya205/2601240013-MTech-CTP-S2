@@ -1,0 +1,24 @@
+Question 4: PEP 695 Syntax for a Generic Data Store Class
+
+#1. Algorithm
+Define a Generic Class with PEP 695: Create a DataStore[T] class using the modern bracket syntax [T] directly next to the class name instead of inheriting from Generic[T].
+
+Initialize Storage: Set up an internal list to hold data items of type T.
+
+Implement Operations: Add methods to add new items to the store and retrieve get_all items.
+
+Test with Different Data Types: Instantiate DataStore for text and numeric datasets to demonstrate modern generic reusability.
+
+#2. Pseudocode
+Plaintext
+CLASS DataStore[T]
+    INITIALIZE items AS empty List of T
+    
+    METHOD add(item: T)
+        APPEND item TO items
+    END METHOD
+    
+    METHOD get_all() -> List[T]
+        RETURN items
+    END METHOD
+END CLASS
