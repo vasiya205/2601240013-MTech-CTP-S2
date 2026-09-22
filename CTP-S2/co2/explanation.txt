@@ -1,0 +1,68 @@
+#1. Algorithm
+Step 1: Time Measurement (Decorator)
+
+Record the current timestamp (start_time).
+
+Run the target log-processing function.
+
+Record the timestamp again (end_time).
+
+Calculate and display the total elapsed time (end_time - start_time).
+
+Step 2: Lazy File Reader (Generator)
+
+Open the log file in read mode.
+
+Loop through the file line by line.
+
+Yield each individual line one at a time to avoid loading the whole file into memory.
+
+Step 3: Error Counting (Main Process)
+
+Initialize an empty frequency counter (collections.Counter).
+
+For every line received from the generator:
+
+Check if the line contains the keyword "ERROR".
+
+If yes, split or extract the specific error type name.
+
+Increment the count for that error type in the counter.
+
+Return the final error frequency report.
+
+
+
+#2. Pseudocode
+Plaintext
+// Define decorator to measure execution time
+FUNCTION measure_time(function_to_run)
+    SET start_time = CURRENT_TIME()
+    SET result = function_to_run()
+    SET end_time = CURRENT_TIME()
+    PRINT "Execution Time:", (end_time - start_time)
+    RETURN result
+END FUNCTION
+
+// Define generator to read file line-by-line (Lazy Loading)
+FUNCTION stream_log_file(file_path)
+    OPEN file_path FOR READING AS file
+    FOR EACH line IN file
+        YIELD TRIM(line)
+    END FOR
+END FUNCTION
+
+// Main processing function with decorator applied
+@measure_time
+FUNCTION process_logs(file_path)
+    CREATE empty Counter object AS error_counter
+    
+    FOR EACH line IN stream_log_file(file_path)
+        IF "ERROR" IN line THEN
+            EXTRACT error_type FROM line
+            INCREMENT error_counter[error_type] BY 1
+        END IF
+    END FOR
+    
+    RETURN error_counter
+END FUNCTION
