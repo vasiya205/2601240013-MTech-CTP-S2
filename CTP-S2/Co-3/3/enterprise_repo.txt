@@ -1,0 +1,28 @@
+Question 3: Generic Types for a Reusable Repository
+
+#1. Algorithm
+Define a Type Variable: Use typing.TypeVar (e.g., T) to represent a generic data type placeholder.
+
+Create a Generic Class: Build a Repository class that inherits from Generic[T], allowing it to manage objects of any specified type (Customer, Product, Employee, etc.).
+
+Implement Repository Logic: Add methods like add() to store items and get_all() to retrieve them, ensuring code reusability across different domain models.
+
+Instantiate and Test: Create separate repository instances for different entity types (e.g., string-based customers and dictionary-based products) to show how the same logic handles multiple data structures.
+
+#2. Pseudocode
+Plaintext
+IMPORT TypeVar, Generic, List
+
+SET T = TypeVar('T')
+
+CLASS Repository(Generic[T])
+    INITIALIZE storage AS empty List
+    
+    METHOD add(item: T)
+        APPEND item TO storage
+    END METHOD
+    
+    METHOD get_all() -> List[T]
+        RETURN storage
+    END METHOD
+END CLASS
